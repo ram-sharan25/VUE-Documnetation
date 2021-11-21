@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- development version, includes helpful console warnings -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        {{ message }}
+    </div>
+    <div id="app1">
+        {{message}}
+    </div>
+
+<!-- 
+    double way data binding in Vue
+    It is achieved by new directive v-model, 
+    the value of text box value to data property og Vue instance. -->
+    <div id='app3'>
+        <h3> Your Name is: {{name}}</h3>
+        <input type="text" v-model="name"/>
+    </div>
+
+    <!-- iteration through numbers  -->
+    <div id="app4">
+       <ol>
+            <li v-for="n in 5">{{n}}</li>
+       </ol>
+    </div>
+    <!-- iterations through array of data from the data property of vue app -->
+    <div id="app5">
+        <ol>
+             <li v-for="n in countdown">{{n}}</li>
+        </ol>
+     </div>
+</body>
+<script type="text/javascript">
+    // for hello world example
+    var app = new Vue({
+        el: '#app',
+        data: {
+            message: 'Hello World!'
+        }
+    });
+    //for two vuw instances in single page 
+    var app = new Vue({
+        el: '#app1',
+        data: {
+            message: 'Hi Again!'
+        }
+    });
+    // for double way data binding 
+    var app = new Vue({
+        el: '#app3',
+        data:{
+            name:'kevin'
+        }
+    });
+    // for iteration through numbers 
+    var app = new Vue({
+        el: '#app4',
+       
+    });
+    // for iterations through array
+    var app = new Vue({
+        el: '#app5',
+        data:{
+            countdown:[7,8,12,45,15,16,14],
+        },
+       
+    });
+</script>
+</html>
