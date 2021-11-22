@@ -36,6 +36,56 @@
              <li v-for="n in countdown">{{n}}</li>
         </ol>
      </div>
+     <!-- for iteration with items index -->
+    <div id="app6">
+        <ol>
+             <li v-for="(fruit,i) in fruits">{{i}}--- {{fruit}}</li>
+        </ol>
+     </div>
+
+     <!-- loop through object property -->
+     <div id="app7">
+         <ul>
+           
+            <li v-for="(value,key,index) in  profile">{{key}}--{{value}}</li> 
+         </ul>
+     </div>
+     <!-- for conditionals using if , end if  -->
+     <div id = "app8">
+         <div v-if="count>10">
+             Count if greater then 10 
+         </div>
+     <div v-else-if="count==10">
+        Count is 10
+     </div>
+     <div v-else>
+        Count is less than 10
+     </div>
+<!-- using v-show -->
+     <div id = "app8">
+        <div v-show="count>10">
+            Count if greater then 10 
+        </div>
+    <div v-show="count==10">
+       Count is 10
+    </div>
+    <div v-show>
+       Count is less than 10
+    </div>
+     </div>
+     <!-- Dynamic Data Binding  -->
+     <div  id="app9">
+        <h3 v-bind:class="{active:isActive}">This is dynamic binding</h3>
+     </div>
+     <!-- button binding  -->
+     <div id="app10" class="container">
+            <p>
+                <button :disabled="disabled" @click="disabled=!disabled">
+                    Disable me
+                </button>
+                <a href="#" @click.prevent="disabled=false">Enable Back</a>
+            </p>
+     </div>
 </body>
 <script type="text/javascript">
     // for hello world example
@@ -69,8 +119,57 @@
         el: '#app5',
         data:{
             countdown:[7,8,12,45,15,16,14],
-        },
-       
+        },  
     });
+    //For list of array with index notations 
+    var app = new Vue({
+        el: '#app6',
+        data:{
+            fruits:["Bunana","Kakro","Ghiura","Apple","Pie"],
+        },  
+    });
+    var app = new Vue({
+        el: '#app7',
+        data:{
+            profile:{
+                name:"Ram",
+                age:"31",
+                degree:"Masters",
+                position:"Full Stack development"
+            },
+        }
+           
+    });
+    //for conditionals
+    var app = new Vue({
+        el:"#app8",
+        data:{
+            count:10,
+        }
+    })
+    //for dynamic data binding 
+    var app = new Vue({
+        el:'#app9',
+        data:{
+            isActive: true
+        }
+    })
+    //for button binding 
+    var app = new Vue({
+        el:'#app10',
+        data:{
+            disabled:false
+        }
+       
+    })
 </script>
+
 </html>
+<style>
+    .active{
+        color:green;
+    }
+    .notActive{
+        color:blue;
+    }
+</style>
