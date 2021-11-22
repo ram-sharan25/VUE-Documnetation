@@ -86,7 +86,14 @@
                 <a href="#" @click.prevent="disabled=false">Enable Back</a>
             </p>
      </div>
-</body>
+     <!-- for event handling -->
+     <div id='app11'>
+         <h2>{{count}}</h2>
+         <button v-on:click="count += 1"> Increase count</button>
+         <button v-on:click="count -= 1"> Decrease count</button>
+     </div>
+
+    </body>
 <script type="text/javascript">
     // for hello world example
     var app = new Vue({
@@ -161,6 +168,12 @@
             disabled:false
         }
        
+    })
+    var app = new Vue({
+        el:'#app11',
+        data:{
+            count:0
+        },
     })
 </script>
 

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- development version, includes helpful console warnings -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <h2>Greet</h2>
+        <button v-on:click="greet('Hello')">Say Hello</button>
+        <button v-on:click="greet('Hi')">Say Hi</button>
+        <button v-on:click="greet('Namaste')">Say Namaste</button>
+         <br/><br/>
+        {{greeting}}
+   </div>
+    <!-- for event handling -->
+    <div id='app1'>
+        {{count}}
+        <button v-on:click="count += 1"> Increase count</button>
+        <button v-on:click="count -= 1"> Decrease count</button>
+    </div>
+    <div id='app2'>
+        <ul>
+        <li v-for='name in names'> {{name}}</li>
+        </ul>
+        <input type="text" v-model="message"/>
+        <button v-on:click="addName">Add Name</button>
+    </div>
+    <div id= 'app3'>
+        <label>Type your name:</label>
+        <input type='text' v-model="name"/>
+        Your name is {{name}}<br/>
+        And is {{charcount}} characters long.
+    </div>
+</body>
+    <script type="text/javascript">
+    var app = new Vue({
+        el:"#app",
+        data:{
+            greeting:"",
+        },
+        methods:{
+            greet:function(greeting){
+                this.greeting=greeting+ ",how are you ?";
+            }
+        }
+    });
+    var app = new Vue({
+        el:'#app1',
+        data:{
+            count:0
+        },
+    });
+
+    // displayed and added also the data from the input from user to the just
+    var app = new Vue({
+        el:'#app2',
+        data:{
+           names:['ram','shyam','hari','bharat','gita'],
+           message:""
+        },
+        methods:{
+            addName:function(){
+                this.names.push(this.message);
+                this.message='';
+            }
+        }
+    });
+    var app = new Vue({
+        el:'#app3',
+        data:{
+            name:"",
+        },
+        computed: {
+            charcount: function(){
+                return this.name.length;
+            }
+        }
+    });
+    </script>
+
