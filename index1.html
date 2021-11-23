@@ -35,6 +35,27 @@
         Your name is {{name}}<br/>
         And is {{charcount}} characters long.
     </div>
+    <!-- filtering by using dropdown -->
+    <div id="app4">
+        <h3>Filter By Category</h3> 
+        <select v-model="category">
+            <option valeu="Accessories">Accessories</option>
+            <option valeu="Laptop">Laptop</option>
+            <option valeu="Stationary">Stationary</option>
+        </select> 
+        <ul>
+            <li v-for="product in filterProductsByCategory">Product Name : {{product.name}} - Price : {{product.price}} ({{product.category}})</li>
+        </ul>
+    </div>
+    <div id="app5">
+        <h3>Filter By Name</h3> 
+        <input type="text" v-model="name" placeholder="Filter By Name"/>
+        <ul>
+            <li v-for="product in filterProductsByName">Product Name : {{product.name}} - Price : {{product.price}} ({{product.category}})</li>
+        </ul>
+    </div>
+    <!-- using the text box query  -->
+    
 </body>
     <script type="text/javascript">
     var app = new Vue({
@@ -80,5 +101,57 @@
             }
         }
     });
+    // filtering by drop down
+    var app = new Vue({
+        el:"#app4",
+        data:{
+            category:'',
+            name:"",
+            products:[
+                { name: "Keyboard", price: 44, category: 'Accessories'},
+                { name: "Mouse", price: 20, category: 'Accessories'},
+                { name: "Monitor", price: 399, category: 'Accessories'},
+                { name: "Dell XPS", price: 599, category: 'Laptop'},
+                { name: "MacBook Pro", price: 899, category: 'Laptop'},
+                { name: "Pencil Box", price: 6, category: 'Stationary'},
+                { name: "Pen", price: 2, category: 'Stationary'},
+                { name: "USB Cable", price: 7, category: 'Accessories'},
+                { name: "Eraser", price: 2, category: 'Stationary'},
+                { name: "Highlighter", price: 5, category: 'Stationary'}
+            ]
+        },
+        computed:{
+            filterProductsByCategory: function(){
+                return this.products.filter(product => !product.category.indexOf(this.category))
+            },
+            filterProductsByName:function(){
+                return this.products.filter(product => !product.name.indexOf(this.name))
+            },
+        }
+    });
+    var app = new Vue({
+        el:"#app5",
+        data:{
+            
+            products:[
+                { name: "Keyboard", price: 44, category: 'Accessories'},
+                { name: "Mouse", price: 20, category: 'Accessories'},
+                { name: "Monitor", price: 399, category: 'Accessories'},
+                { name: "Dell XPS", price: 599, category: 'Laptop'},
+                { name: "MacBook Pro", price: 899, category: 'Laptop'},
+                { name: "Pencil Box", price: 6, category: 'Stationary'},
+                { name: "Pen", price: 2, category: 'Stationary'},
+                { name: "USB Cable", price: 7, category: 'Accessories'},
+                { name: "Eraser", price: 2, category: 'Stationary'},
+                { name: "Highlighter", price: 5, category: 'Stationary'}
+            ]
+        },
+        computed:{
+            filterProductsByName: function() {
+                return this.products.filter(product => !product.name.indexOf(this.name))
+            },
+        }
+    });
+
     </script>
 
