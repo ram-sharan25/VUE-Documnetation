@@ -57,6 +57,22 @@
                             <option value="Other">Other</option>
                         </select>
                     </div>
+                    <div class="form-group">
+                        <label for= "formControlRange">Which of the services are you interested in ?</label>
+                        <div class="form-check form-check-inline">
+                            <input type="checkbox" id="inlineCheckbox1" value="online" v-model="form.interested" class="form-check-input">
+                            <label for="inlineCheckbox1" class="form-check-label">Online Tests</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input type="checkbox" id="inlineCheckbox2" value="paper" v-model="form.interested" class="form-check-input">
+                            <label for="inlineCheckbox2" class="form-check-label">Paper Based Tests</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input type="checkbox" id="inlineCheckbox3" value="customized" v-model="form.interested" class="form-check-input">
+                            <label for="inlineCheckbox3" class="form-check-label">Customized Tests</label>
+                        </div>
+
+                    </div>
                 
 
                 <div class="column">
@@ -88,6 +104,8 @@
                 email:"",
                 gender:"",
                 refer:"",
+                interested:[],
+                message:'',
 
             }
         }
