@@ -16,7 +16,7 @@
             <div id="app">
                 <br/>
                 <h2> Contact US </h2>
-                <form>
+                <form v-on:submit.prevent="formSubmit">
                     <div class="form-group">
                         <label for="name">Name </label>
                         <input type="name" class="form-control" id="name" placeholder="Your Name Here" v-model="form.name"/> 
@@ -58,7 +58,7 @@
                         </select>
                     </div>
                     <div class="form-group">
-                        <label for= "formControlRange">Which of the services are you interested in ?</label>
+                        <label for= "formControlRange">Which of the services are you interested in ?</label></br>
                         <div class="form-check form-check-inline">
                             <input type="checkbox" id="inlineCheckbox1" value="online" v-model="form.interested" class="form-check-input">
                             <label for="inlineCheckbox1" class="form-check-label">Online Tests</label>
@@ -73,6 +73,23 @@
                         </div>
 
                     </div>
+                    <div class="form-group">
+                        <label for="message">Your Message</label>
+                        <textarea name="message" class="form-control" id="message" rows="3" v-model="form.message"></textarea>
+                        
+                    </div>
+                    <div class="form-group">
+                        <label for='satisfaction'>How satisfied are you with your service?</label>
+                        <input type="range" name="satisfaction" class="form-control-range" id="formControlRange" min="0" max="10" v-model="form.satisfaction">
+                    </div>
+                    <div class="form-group">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="checkbox" id = "terms" value="yes" v-model="form.terms">
+                            <label for="inlineCheckbox3" class="form-check-label">Agree to terms and COnditions</label>
+                        </div>
+                    </div>
+
+                   
                 
 
                 <div class="column">
@@ -87,7 +104,9 @@
                       </div>
                     </section>
                   </div>
-
+                  <div class="form-group">
+                      <button class="btn btn-primary">Submit</button>
+                  </div>
                 </form>
 
 
@@ -95,7 +114,7 @@
         </div>
     </div>
 </body>
-<script>
+<script type="text/javascript">
     var app= new Vue({
         el:'#app',
         data:{
@@ -106,7 +125,16 @@
                 refer:"",
                 interested:[],
                 message:'',
+                satisfaction:'',
+                terms:''
 
+            }
+        
+        },
+        methods:{
+            formSubmit:function(event){
+                console.log(this.form);
+                event.target.reset();
             }
         }
     });
