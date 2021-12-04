@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./font-awesome-4.7.0/css/font-awesome.min.css ">
+    <!-- development version, includes helpful console warnings -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body class="container">
+<div id="app">
+    <div style="margin: 0;padding: 0;display: grid;height: 100%;max-width: 100vh;max-height: 100vh;
+            margin: auto; ">
+    <img  :src="images[currentImage]" width="750" height="780"/></br></br>
+
+    </div>
+    <div style="object-position:center">
+    <button class=" btn btn-primaary button" href="#" @click="previousImage">Previous</button>
+    <button class="button btn btm-primary" href="#" @click="nextImage">Next</button>
+   <div>
+
+</div>
+   
+</body>
+</html>
+<script>
+    var app =new Vue({
+        el:"#app",
+        data:{
+            images:["images/aakha chopi.jpg",
+                    "images/ramriiii maya.jpg",
+                    "images/WE are pretty.jpg"],
+
+        
+            currentImage:0,
+
+        },
+        methods:{
+            nextImage:function(e){
+                if(this.currentImage !== (this.images.length-1))
+                    this.currentImage++;
+            },
+            previousImage:function(e){
+                if(this.currentImage !== 0)
+                    this.currentImage--;
+            },
+        }
+    })
+</script>
