@@ -16,8 +16,8 @@
 
     </div>
     <div style="object-position:center">
-    <button class=" btn btn-primaary button" href="#" @click="previousImage">Previous</button>
-    <button class="button btn btm-primary" href="#" @click="nextImage">Next</button>
+    <button class=" btn btn-primaary button":disabled="currentImage===0" href="#" @click="previousImage">Previous</button>
+    <button class="button btn btm-primary" :disabled="currentImage===(images.length-1)"href="#" @click="nextImage">Next</button>
    <div>
 
 </div>
