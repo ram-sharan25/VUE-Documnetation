@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./font-awesome-4.7.0/css/font-awesome.min.css ">
+    <!-- development version, includes helpful console warnings -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body class="container">
+<div id="app">
+    <h3 class="tipCalculator">
+        Tip Calculator
+    </h3>
+    <label>
+        How much is the total bill amount?
+    </label></br>
+    <input class="tipCalculator" type="number" v-model="billAmount"/></br>
+    <label>
+        How was the service?
+    </label></br>
+    <select class="tipCalculator" v-model="service">
+        <option value="0.05" >5%(It was terrible)</option>
+        <option value="0.10" >10%(It was bad)</option>
+        <option value="0.15" >15%(It was okay)</option>
+        <option value="0.20" >20%(It was Good)</option>
+        <option value="0.30" >30%(It was exceptional)</option>
+    </select></br>
+    <label>
+        How many people are sharing the bill?
+    </label></br>
+    <input class="tipCalculator" type="number" v-model="noPeople"/></br>
+    <!-- .tofixed function to fix the decimal points to two digits  -->
+     <div class="tipCalculator">Tip Amount:<strong>:{{tipPerPerson.toFixed(2)}}/person</strong> </div> 
+
+</div>
+</body>
+<script>
+    var app = new Vue({
+        el:"#app",
+        data:{
+            message:"hello World",
+            billAmount:20,
+            service:0.1,
+            noPeople:2,
+
+        },
+        computed:{
+            tipPerPerson:function(){
+                // clever logic to compare is not equal to NaN and greater than zero and anding both , 
+                // if any of the case id true then the value is restricted to 1 
+                this.people = (!isNaN(this.people)&&this.people>0)? this.people:1 // Restrict people to be 1 if its value is input to ne NaN or 0
+                // returning value of tip if and only if valid input is given
+                return  this.amount>0 ? (this.billAmount*this.service)/this.noPeople;
+                
+            }
+        },
+    });
+</script>
