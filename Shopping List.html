@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping App</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <!-- development version, includes helpful console warnings -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <style>
+
+    </style>
+</head>
+<body>
+    <div id="app">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h3>Shopping List</h3>
+                    <input v-model="newItem" name="newItem" value="" placeholder="Enter the new item" @keyup.enter="addItem">
+                    <div class="from-list-control">
+                        <ul>
+                            <li class="form-list-control" v-for="item in items" v-model="item.checked":class="{removed: item.checked}">
+                                <div>
+                                    <input class="form-check-input" type="checkbox" value="" v-model="item.checked">
+                                    <label >
+                                        {{item.text}}
+                                    </label>
+                                </div>
+                            </li>
+                        </ul>
+                    </br></br>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+</body>
+<script>
+    var app= new Vue({
+        el:"#app",
+        data:{
+            items:[
+                {text:"banana",checked:false},
+                {text:"apple",checked:false},
+                {text:"thakela",checked:false},
+                
+            ],
+            newItem:"",
+        },
+        methods:{
+            
+            addItem = function(){
+                var text;
+                text = this.newItem.trim();
+                if(text){
+                    this.items.push({text:this.newItem,checked:false});
+                    this.newItem="";
+                }
+
+            }
+
+        },
+    });
+
+</script>
+</html>
