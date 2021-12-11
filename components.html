@@ -9,9 +9,7 @@
 </head>
 <body>
    <div id="app">
-    <button-click-counter v-for="name in names" 
-                        v-bind:key="name.id"
-                        >Helllo </button-click-counter>
+    <button-click-counter :key="name.id" :title="name.title": v-for="name in names"> </button-click-counter>
    
 </body>
 <script src="button-click-counter.js"></script>
